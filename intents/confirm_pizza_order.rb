@@ -14,5 +14,12 @@ intent 'ConfirmPizzaOrder' do
     "Your order ID is #{pizza.id}. Thank you for using Pizza Buddy!"
   ].join(' ')
 
-  tell(response_text)
+  # Construct a standard card
+  card_title = "Your Pizza Order: #{pizza.id}"
+  card_body = "You ordered a #{pizza.size} pizza with #{pizza.toppings.to_sentence}."
+  card_image = 'https://image.ibb.co/jeRZLv/alexa_pizza.png'
+
+  pizza_card = card(card_title, card_body, card_image)
+
+  tell(response_text, card: pizza_card)
 end
