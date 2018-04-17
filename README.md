@@ -57,5 +57,4 @@ end
 16. Select "Save" on the top right
 17. Go back to the "Security Profiles" page and edit the role you just created
 18. Click on the "Web Settings" tab and edit the allowed return URLs to add the "layla" URL that you got from the Account Linking page
-19. In your startup intent, add a check for `request.user_access_token_requests?`, and return a `tell()` with a `link_account` card to allow a user to link their account. See `launch_request.rb` for an example.
-20. The user can now login with their Amazon account and link to your Alexa skill!
+19. In your startup intent, add the ability to authenticate & store a user. See `launch_request.rb` for an example.

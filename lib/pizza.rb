@@ -1,6 +1,8 @@
 require 'data_mapper'
 require 'dm-postgres-types'
 
+require_relative './user'
+
 class Pizza
   include DataMapper::Resource
 
@@ -10,6 +12,8 @@ class Pizza
   property :id, Serial
   property :size, String
   property :toppings, PgArray
+
+  belongs_to :user
 
   def self.disallowed_toppings(toppings)
     toppings.reject { |topping| allowed_topping?(topping) }
