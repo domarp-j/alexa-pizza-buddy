@@ -4,21 +4,8 @@ This is Part 2 of the demo for setting up an Alexa skill with Ruby! Go through t
 
 Based on a great guide by Maker's Academy: https://developer.amazon.com/alexa-skills-kit/makers-academy
 
-## Setup
+This is a continuation of the [first part of this demo](https://github.com/domarp-j/alexa-number-facts) which goes through the basics of creating a dialogue model and setting up a Sinatra app for handling Alexa requests. If you haven't seen it already, check that out first!
 
-Note: this is a continuation of the [first part of this demo](https://github.com/domarp-j/alexa-number-facts) which goes through the basics of creating a dialogue model and setting up a Sinatra app for handling Alexa requests. If you haven't seen it already, check that out first!
-
-### Part 1 - Using Ralyxa
-
-1. Add Ralyxa to Gemfile
-2. Update `server.rb` to require raylxa
-3. Create one post controller action:
-```
-post '/' do
-  Ralyxa::Skill.handle(request)
-end
-```
-4. Create an `intents/` directory
-5. Create a `.rb` file for each intent
-
-
+A skill called "Pizza Buddy" is created as part of this demo, using (in addition to Sinatra and ngrok):
+- [ralyxa](https://github.com/sjmog/ralyxa), a gem that easily handles Alexa requests & responses
+- [data_mapper](https://github.com/datamapper/data_mapper) and Postgres for persistence
