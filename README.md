@@ -25,8 +25,7 @@ end
 4. For each intent that you have defined in the AWS Alexa Developer Console, create an intent `.rb` folder with the following format:
 ```
 intent 'IntentName' do
-  ask(...)
-  tell(...)
+  # See the documentation of Ralyxa for what you can do here!
 end
 ```
 
