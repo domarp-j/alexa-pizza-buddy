@@ -37,3 +37,25 @@ end
 4. Load `database.rb` in `server.rb`
 5. For any classes that you would like to reflect as models, make sure to `include DataMapper::Resource` and define properties as needed (see `lib/pizza`). They will behave a lot like Rails models.
 
+### Part 3 - Creating an Amazon Security Profile and Account Linking
+
+1. Go to the [Amazon Developer Console](https://developer.amazon.com/home.html)
+2. On the top bar, select "Apps & Services"
+3. Click on "Security Profiles", then "Create a New Security Profile"
+4. Define a name & description for your security profile, which you will associate with your Alexa skill
+5. Save your client ID and secret!
+6. Go to the [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) and choose your skill
+7. On the left panel, select "Account Linking"
+8. Flip the top switch to allow users allow users to create/link accounts with your skill
+9. For the "Authorization URI" field, enter https://www.amazon.com/ap/oa
+10. Ensure the "Authorization Grant Type" is "Auth Code Grant"
+11. For the "Access Token URI" field, enter https://api.amazon.com/auth/o2/token
+12. Enter the client ID and secret for the security profile you created
+13. Add a single "Scope" called "profile"
+14. Ensure that the "Client Authentication Scheme" is "HTTP Basic"
+15. Save the redirect URLs listed on the page
+16. Select "Save" on the top right
+17. Go back to the "Security Profiles" page and edit the role you just created
+18. Click on the "Web Settings" tab and edit the allowed return URLs to add the "layla" URL that you got from the Account Linking page
+19. In your startup intent, add a check for `request.user_access_token_requests?`, and return a `tell()` with a `link_account` card to allow a user to link their account. See `launch_request.rb` for an example.
+20. The user can now login with their Amazon account and link to your Alexa skill!
