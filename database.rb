@@ -9,4 +9,4 @@ configure :development do
 end
 
 DataMapper.finalize
-Pizza.auto_upgrade!
+DataMapper.auto_upgrade!
