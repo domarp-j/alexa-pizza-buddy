@@ -16,7 +16,7 @@ Note: These instructions are based on the developer console beta that exists as 
 
 ### Part 1 - Using Ralyxa
 
-1. In your `server.rb` file, make sure that you `require 'ralyxa`
+1. In your `server.rb` file, make sure that you `require 'ralyxa'`
 2. Create a single `post` action like so:
 ```
 post '/' do
@@ -63,13 +63,15 @@ end
 
 ### Part 4 - Asking the user to link their account
 
-1. Make sure that you have a `User` model to support authentication (see `lib/user.rb` as an example)
+1. Make sure that you have a `User` model of some sort to support authentication (see `lib/user.rb` as an example)
 2. For the intent that you want to require authentication, add something like the following:
 ```
 intent 'IntentName' do
   # Ask the client to authenticate their account via the Alexa app on their phone if a user access token is not provided with the request
   # Ralyxa provides a "link_account_card" object to make this easier
-  return tell("Please authenticate your account via the Alexa app.", card: link_account_card) unless request.user_access_token_exists?
+  unless request.user_access_token_exists?
+    return tell("Please authenticate your account via the Alexa app.", card: link_account_card)
+  end
 
   # Use the logged-in user's user access token to authenticate the account
   user = User.authenticate(request.user_access_token)
